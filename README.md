@@ -1,1 +1,1 @@
-# FDE-journey
+"Documenting my 24 week fde Journey"
