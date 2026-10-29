@@ -12,10 +12,10 @@ try:
     response = requests.get(url, params=params, timeout=10)
     response.raise_for_status()
 except requests.ConnectionError:
-    print("No internet FAM :( ")
+    print("No internet connection ")
     raise SystemExit(1)
 except requests.Timeout:
-    print("The server took long to respond :( ")
+    print("The server took long to respond  ")
     raise SystemExit(1)
 except requests.RequestException as e:
     print(f"Request failed: {type(e).__name__}")
