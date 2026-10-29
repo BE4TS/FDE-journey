@@ -8,9 +8,18 @@ params = {
     "daily": "temperature_2m_max,precipitation_sum",
     "timezone": "Asia/Kolkata",
 }
-
-response = requests.get(url, params=params, timeout=10)
-response.raise_for_status()
+try:
+    response = requests.get(url, params=params, timeout=10)
+    response.raise_for_status()
+except requests.ConnectionError:
+    print("No internet FAM :( ")
+    raise SystemExit(1)
+except requests.Timeout:
+    print("The server took long to respond :( ")
+    raise SystemExit(1)
+except requests.RequestException as e:
+    print(f"Request failed: {type(e).__name__}")
+    raise SystemExit(1)
 data = response.json()["daily"]
 
 with open("weather.csv", "w", newline="") as f:
