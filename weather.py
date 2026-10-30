@@ -1,5 +1,6 @@
 import csv
 import requests
+import sys
 
 url = "https://api.open-meteo.com/v1/forecast"
 def fetch_data(lat,lng):
@@ -32,7 +33,11 @@ def save_csv(data,filename="weather.csv"):
         for d, t, r in zip(data["time"], data["temperature_2m_max"], data["precipitation_sum"]):
             writer.writerow([d, t, r])
 
+if len(sys.argv)==3:
+    lat,lon=float(sys.argv[1]),float(sys.argv[2])
+else:
+    lat,lon=10.91,75.92
 
-data=fetch_data(10.91,75.92)
+data=fetch_data(lat,lon)
 save_csv(data)
 print("saved weather.csv")
