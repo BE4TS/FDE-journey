@@ -7,7 +7,7 @@ def fetch_data(lat,lng):
     params = {
     "latitude": lat,      # Tirur
     "longitude": lng,
-    "daily": "temperature_2m_max,precipitation_sum",
+    "daily": "temperature_2m_max,temperature_2m_min,precipitation_sum",
     "timezone": "Asia/Kolkata",
     }
     try:
@@ -29,9 +29,9 @@ def fetch_data(lat,lng):
 def save_csv(data,filename="weather.csv"):
     with open(filename, "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["date", "max_temp_c", "rain_mm"])
-        for d, t, r in zip(data["time"], data["temperature_2m_max"], data["precipitation_sum"]):
-            writer.writerow([d, t, r])
+        writer.writerow(["date", "max_temp_c", "rain_mm","min_temp_c"])
+        for d, t, r,s in zip(data["time"], data["temperature_2m_max"], data["precipitation_sum"],data["temperature_2m_min"]):
+            writer.writerow([d, t, r,s])
 
 if len(sys.argv)==3:
     lat,lon=float(sys.argv[1]),float(sys.argv[2])
