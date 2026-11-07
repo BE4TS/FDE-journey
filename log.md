@@ -5,3 +5,4 @@
 | Nov 2  | 11:08 | 12:43 | 1.6   | Min temp column, started campus-data-pipeline, explored messy data, clean.py   |
 | Nov 3  | 11:01 | 12:00 | 1.0   | clean_reg_no, clean_names, fix_name_typos; df.copy(), regex, groupby/mode      |
 | Nov 6  | 11:37 | 13:43 | 1.1   | clean_dates, clean_status, clean_marks; date formats, step order dependencies  |
+| Nov 7  | 11:48 | 13:02 | 1.2   | Full cleaning pipeline (main), first pytest tests; assert, .tolist()
